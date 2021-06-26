@@ -1,0 +1,77 @@
+.canvas{
+    padding-top: 0px;
+    padding: 4rem 2rem;
+    margin-top: 0px;
+    margin-bottom: 2rem;
+    animation: animateBg 10s ease infinite;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #251356, #236985, #524515, #a39845);
+  	background-size: 500% 500%;
+    text-align: center;
+}
+
+.heading1{
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+@keyframes animateBg {
+    0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.detail {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.heading3 {
+  font-weight: 700;
+}
+
+.pdetail {
+  margin-left: 170px;
+  border-width: 5px;
+  border-color:darkgray;
+  border-style: ridge;
+  height: 300px;
+  place-content: center;
+  width: 80%;
+}
+.pdetail .text {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  margin-left:5px;
+  margin-right: 5px;
+  text-align: justify;
+  font-weight: bold;
+}
+
+
+
+
+.order {
+  margin-left: 50px;
+  margin-left: 170px;
+  border-width: 5px;
+  border-color:darkgray;
+  border-style: ridge;
+  height: 300px;
+  place-content: center;
+  width: 80%;
+}
+
+.ordertext{
+  margin-top: 15px;
+  margin-bottom: 5px;
+  margin-left:5px;
+  margin-right: 5px;
+  text-align: justify;
+  font-weight: bold;
+}
