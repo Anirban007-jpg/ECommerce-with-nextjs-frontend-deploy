@@ -1,5 +1,12 @@
 import App from 'next/app';
 
+// const withCSS = require('@zeit/next-css')
+
+// module.exports = withCSS({
+//   cssModules: true  // After true than use import statement in next.js
+// })
+
+
 
 import "../static/css/global.css";
 import { ToastContainer } from "react-toastify";
