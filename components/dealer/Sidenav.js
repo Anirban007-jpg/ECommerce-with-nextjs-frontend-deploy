@@ -3,7 +3,6 @@ import Link from 'next/link';
 import {logout, isAuth} from "../../actions/auth";
 import Router, {withRouter} from "next/router";
 import {API_NAME} from '../../config';
-import '../../static/css/Sidenav.css';
 import dynamic from 'next/dynamic';
 
 

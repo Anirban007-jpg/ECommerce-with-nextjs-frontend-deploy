@@ -4,9 +4,9 @@ import App from 'next/app';
 import "../static/css/global.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import '../static/css/SideNav.css';
 // import '../static/css/SideNav.css';
-
+import "../static/css/form.css";
 
 
 

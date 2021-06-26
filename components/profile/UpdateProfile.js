@@ -5,7 +5,7 @@ import {toast} from 'react-toastify';
 import Router from 'next/router';
 import { Form } from 'reactstrap';
 import FormData from 'form-data';
-import "../../static/css/form.css";
+
     
 
 const UpdateProfile = ({user}) => {
