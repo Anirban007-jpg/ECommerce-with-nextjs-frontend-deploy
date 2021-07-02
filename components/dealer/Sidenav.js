@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic';
 
 const styleChange = (router,key) => {
   if (router.pathname === key){
-    return {backgroundColor: '#ceecee', transition: "0.5s ease"}
+    return {backgroundColor: 'black', transition: "0.5s ease"}
   }else{
     return;
   }
@@ -29,7 +29,7 @@ const Sidenav = ({router}) => {
                 <a href="/dealer"><i className="fas fa-home"></i></a>&nbsp;&nbsp;&nbsp;
                 <span className="items" >
                   <Link href="/dealer" >
-                      <a style={{color: 'black', fontWeight: '700'}}>
+                      <a style={{color: 'blue', fontWeight: '700'}}>
                         Dashboard
                       </a>
                   </Link>
@@ -40,13 +40,29 @@ const Sidenav = ({router}) => {
               <li className="menu-item" style={styleChange(router, "/dealer/profile")}>
                 <i className="fas fa-user"></i>&nbsp;&nbsp;&nbsp;
                 <span className="items">
-                  <Link href={{
-                      pathname : '/dealer/profile',
-                      query : {id : 'id'},
-                    }}
-                  >
-                    <a style={{color: 'black', fontWeight: '700'}}>
+                  <Link href="/dealer/profile">
+                    <a style={{color: 'blue', fontWeight: '700'}}>
                       Profile
+                    </a>
+                  </Link>
+                </span>
+              </li>
+              <li className="menu-item" style={styleChange(router, "/dealer/category")}>
+                <i className="fas fa-layer-group"></i>&nbsp;&nbsp;&nbsp;
+                <span className="items">
+                  <Link href='/dealer/category'>
+                    <a style={{color: 'blue', fontWeight: '700'}}>
+                      Available Categories 
+                    </a>
+                  </Link>
+                </span>
+              </li>
+              <li className="menu-item" style={styleChange(router, "/dealer/category/create")}>
+                <i className="fas fa-layer-group"></i>&nbsp;&nbsp;&nbsp;
+                <span className="items">
+                  <Link href='/dealer/category/create'>
+                    <a style={{color: 'blue', fontWeight: '700'}}>
+                      Add New Category 
                     </a>
                   </Link>
                 </span>
