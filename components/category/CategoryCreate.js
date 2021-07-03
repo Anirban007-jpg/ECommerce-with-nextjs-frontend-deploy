@@ -9,20 +9,31 @@ import {CreateCategory} from '../../actions/category';
 // import LinearProgress from '@material-ui/core/LinearProgress';
 // import { makeStyles } from '@material-ui/core/styles';
 // import {FormControl, InputLabel, Input, FormHelperText} from '@material-ui/core';
-// import Button from '@material-ui/core/Button';
 // import DeleteIcon from '@material-ui/icons/Delete';
 // import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 // import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
 // import Icon from '@material-ui/core/Icon';
 // import SaveIcon from '@material-ui/icons/Save';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Alert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
 
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      width: '100%',
+      '& > * + *': {
+        marginTop: theme.spacing(2),
+      },
+    },
+  }));
 
 
 const CategoryCreate = () => {
 
+    const classes = useStyles();
     const [loading, setLoading] = useState(false);
+    const [open, setOpen] = useState(true);
     
     const [values,setValues] = useState({
         category_name: "",
@@ -64,6 +75,10 @@ const CategoryCreate = () => {
         
     return (
         <>
+            <div>
+                {error  ? (<Alert variant="filled" severity="error" style={{paddingLeft:'20rem', paddingRight:'15rem', width: '50%', marginLeft:'29rem'}}><strong>{error}</strong></Alert>) : ''}
+                {success ?  (<Alert variant="filled" severity="success" style={{paddingLeft:'15rem', paddingRight:'15rem', width: '50%', marginLeft:'25rem'}}><strong>{success}</strong></Alert>) : ''}            
+            </div><br/>
             <div className="container" id={styles.myform}>
                 <h3 className={styles.heading2}>Fill up the details :-</h3>
                 <hr/>
