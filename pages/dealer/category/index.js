@@ -6,8 +6,9 @@ import Router, {withRouter} from 'next/router';
 import Head from 'next/head';
 import { API_NAME, DOMAIN } from "../../../config";
 import CategoryIndex from '../../../components/category/CategoryIndex';
+import { ListCategories } from '../../../actions/category';
 
-const category = ({router}) => {
+const category = ({categories}) => {
 
     const head = () => (
         <Head>
@@ -53,7 +54,7 @@ const category = ({router}) => {
                         <h1 className="heading1">Category Management</h1>
                         <p className="lead text-white font-weight-bold"><strong>List of Categories made till now</strong></p>
                 </div><br/>
-                <CategoryIndex />
+                <CategoryIndex categories={categories} />
             </Dashboard> 
             
             <footer className="page-footer" style={{backgroundColor: '#757575', marginTop: '45rem'}}>
@@ -81,4 +82,16 @@ const category = ({router}) => {
     )
 }
 
-export default withRouter(category)
+category.getInitialProps = () => {
+  return ListCategories().then(data => {
+    if (data.error){
+      console.log(error);
+    }else{
+      return {
+        categories : data.categories
+      };
+    }
+  })
+}
+
+export default category;

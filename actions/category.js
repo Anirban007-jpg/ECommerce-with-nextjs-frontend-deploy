@@ -19,3 +19,14 @@ export const CreateCategory = (token, content) => {
         console.log(err);
     })
 }
+
+export const ListCategories = () => {
+    return fetch(`${API}/categories`, {
+        method: 'GET'
+    }).then(response => {
+        handleResponse(response);
+        return response.json();
+    }).catch(err => {
+        console.log(err);
+    })
+}
