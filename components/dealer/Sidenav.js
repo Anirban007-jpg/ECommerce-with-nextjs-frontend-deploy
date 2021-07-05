@@ -58,7 +58,7 @@ const Sidenav = ({router}) => {
                 </span>
               </li>
               <li className="menu-item" style={styleChange(router, "/dealer/category/create")}>
-                <i className="fas fa-layer-group"></i>&nbsp;&nbsp;&nbsp;
+                <i className="fas fa-plus"></i>&nbsp;&nbsp;&nbsp;
                 <span className="items">
                   <Link href='/dealer/category/create'>
                     <a style={{color: 'blue', fontWeight: '700'}}>
@@ -78,7 +78,7 @@ const Sidenav = ({router}) => {
                 </span>
               </li>
               <li className="menu-item" style={styleChange(router, "/dealer/brand/create")}>
-                <i className="fas fa-layer-group"></i>&nbsp;&nbsp;&nbsp;
+                <i className="fas fa-plus"></i>&nbsp;&nbsp;&nbsp;
                 <span className="items">
                   <Link href='/dealer/brand/create'>
                     <a style={{color: 'blue', fontWeight: '700'}}>
