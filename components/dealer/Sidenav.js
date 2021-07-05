@@ -67,6 +67,26 @@ const Sidenav = ({router}) => {
                   </Link>
                 </span>
               </li>
+              <li className="menu-item" style={styleChange(router, "/dealer/brand")}>
+                <i className="fas fa-layer-group"></i>&nbsp;&nbsp;&nbsp;
+                <span className="items">
+                  <Link href='/dealer/brand'>
+                    <a style={{color: 'blue', fontWeight: '700'}}>
+                      Available Brands 
+                    </a>
+                  </Link>
+                </span>
+              </li>
+              <li className="menu-item" style={styleChange(router, "/dealer/brand/create")}>
+                <i className="fas fa-layer-group"></i>&nbsp;&nbsp;&nbsp;
+                <span className="items">
+                  <Link href='/dealer/brand/create'>
+                    <a style={{color: 'blue', fontWeight: '700'}}>
+                      Add New Brand
+                    </a>
+                  </Link>
+                </span>
+              </li>
               <li className="menu-item" onClick={() => logout(() => {Router.replace('/')})}>
                 <i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;
                 <span className="items">
