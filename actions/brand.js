@@ -34,3 +34,14 @@ export const ListBrands = (token) => {
         console.log(err);
     })
 }
+
+export const ReadBrand = (slug) => {
+    return fetch(`${API}/brand/${slug}`, {
+        method: 'GET'
+    }).then((response) => {
+        handleResponse(response);
+        return response.json();
+    }).catch((err) => { 
+        console.log(err)
+    })
+}

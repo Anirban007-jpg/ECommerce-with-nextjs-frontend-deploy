@@ -7,15 +7,19 @@ const CategoryIndex = ({categories}) => {
 
     const showallCategories = () => {
         return categories.map((category, i) => (
-            <div class="row" key={i}>
-            <div class="col s12 m6">
-              <div class="card blue-grey darken-1">
-                <div class="card-content white-text">
-                  <span class="card-title">{category.category_name}</span>
+            <div className="row" key={i}>
+            <div className="col s12 m6">
+              <div className="card blue-grey darken-1">
+                <div className="card-content white-text">
+                  <span className="card-title">{category.category_name}</span>
                   <p>Created {moment(category.created_on).fromNow()} </p>
                 </div>
-                <div class="card-action">
-                  <a href="#">Read More</a>
+                <div className="card-action">
+                  <Link href={`category/${category.slug}`}>
+                    <a>
+                      Description
+                    </a>
+                  </Link>
                     <a href="">Update Category</a>
                   {isAuth() && isAuth() !== false && isAuth().role === 'Admin' && (
                       <a href="">Delete Category</a>

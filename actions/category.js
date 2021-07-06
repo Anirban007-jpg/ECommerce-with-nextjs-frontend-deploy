@@ -30,3 +30,15 @@ export const ListCategories = () => {
         console.log(err);
     })
 }
+
+
+export const ReadCategory = (slug) => {
+    return fetch(`${API}/category/${slug}`, {
+        method: 'GET'
+    }).then((response) => {
+        handleResponse(response);
+        return response.json();
+    }).catch((err) => { 
+        console.log(err)
+    })
+}
