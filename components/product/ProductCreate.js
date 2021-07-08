@@ -3,6 +3,8 @@ import { ListCategories } from '../../actions/category'
 import {ListBrands} from '../../actions/brand';
 import { getCookie } from '../../actions/auth';
 import {CreateProduct} from '../../actions/product';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Alert from '@material-ui/lab/Alert';
 
 const ProductCreate = () => {
 
@@ -96,11 +98,12 @@ const ProductCreate = () => {
 
     return (
        <>
+       <div>
+            {error  ? (<Alert variant="filled" severity="error" style={{paddingLeft:'20rem', paddingRight:'15rem', width: '50%', marginLeft:'29rem'}}><strong>{error}</strong></Alert>) : ''}
+            {success ?  (<Alert variant="filled" severity="success" style={{paddingLeft:'15rem', paddingRight:'15rem', width: '50%', marginLeft:'25rem'}}><strong>{success}</strong></Alert>) : ''}        
+       </div><br/>
         <div className="row">
-            <div className="col-md-1">
-
-            </div>
-            <div className="col-md-11"><br/>
+            <div className="col-md-12" style={{marginLeft: '2rem'}}><br/>
                 <h1 style={{textAlign: 'center', textDecoration:'underline'}}><strong>FILL UP THE FORM TO CREATE PRODUCT</strong></h1><hr/>
                 <form onSubmit={handleSubmit}>
                     {/* <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
@@ -161,10 +164,18 @@ const ProductCreate = () => {
                         </select>
                     </div>
                     <hr/>
-                    <div>
-                        <button type="submit" className="btn btn-raised btn-primary" style={{display: 'block', width: '100%', border: '1px solid grey', borderRadius: '15rem', height: '3rem'}}>Create Product</button><br/>
-                        <button type="reset" className="btn btn-raised btn-danger" style={{background:'red', display: 'block', width: '100%', border: '1px solid grey', borderRadius: '15rem', height: '3rem'}}>Reset</button>
-                    </div><br/>
+                    {loading ? (
+                        <>
+                            <LinearProgress color="secondary" />
+                        </>
+                    ) :
+                    (
+                        <div>
+                            <button type="submit" className="btn btn-raised btn-primary" style={{display: 'block', width: '100%', border: '1px solid grey', borderRadius: '15rem', height: '3rem'}}>Create Product</button><br/>
+                            <button type="reset" className="btn btn-raised btn-danger" style={{background:'red', display: 'block', width: '100%', border: '1px solid grey', borderRadius: '15rem', height: '3rem'}}>Reset</button>
+                        </div>
+                    )}
+                    
                </form>
             </div>
         </div>
