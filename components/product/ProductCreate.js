@@ -106,13 +106,13 @@ const ProductCreate = () => {
             <div className="col-md-12" style={{marginLeft: '2rem'}}><br/>
                 <h1 style={{textAlign: 'center', textDecoration:'underline'}}><strong>FILL UP THE FORM TO CREATE PRODUCT</strong></h1><hr/>
                 <form onSubmit={handleSubmit}>
-                    {/* <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
+                    <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Brand:</label><br/>
                         <select name="brand" className="form-control" onChange={handleChange}>
                             <option>Please select</option>
-                            {brands.map(b => <option key={b.slug} value={b.brand_name}>{b.brand_name}</option>)}
+                            {brands.map(b => <option key={b._id} value={b._id}>{b.brand_name}</option>)}
                         </select>
-                    </div><br/> */}
+                    </div><br/>
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Category:</label><br/>
                         <select name="category" className="form-control" onChange={handleChange}>
@@ -173,8 +173,8 @@ const ProductCreate = () => {
                     ) :
                     (
                         <div>
-                            <button type="submit" className="btn btn-raised btn-primary" style={{display: 'block', width: '100%', border: '1px solid grey', borderRadius: '15rem', height: '3rem'}}>Create Product</button><br/>
-                            <button type="reset" className="btn btn-raised btn-danger" style={{background:'red', display: 'block', width: '100%', border: '1px solid grey', borderRadius: '15rem', height: '3rem'}}>Reset</button>
+                            <button type="submit" className="btn btn-raised btn-primary" style={{display: 'block', width: '80%', border: '1px solid grey', borderRadius: '15rem', height: '3rem', marginLeft: '9rem'}}>Create Product</button><br/>
+                            <button type="reset" className="btn btn-raised btn-danger" style={{background:'red', display: 'block', width: '80%', border: '1px solid grey', borderRadius: '15rem', height: '3rem', marginLeft: '9rem'}}>Reset</button>
                         </div>
                     )}
                     
