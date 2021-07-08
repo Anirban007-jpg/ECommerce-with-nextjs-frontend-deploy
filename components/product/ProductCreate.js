@@ -5,6 +5,8 @@ import { getCookie } from '../../actions/auth';
 import {CreateProduct} from '../../actions/product';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Alert from '@material-ui/lab/Alert';
+import FileUpload from '../forms/FileUpload';
+
 
 const ProductCreate = () => {
 
@@ -102,11 +104,15 @@ const ProductCreate = () => {
             {error  ? (<Alert variant="filled" severity="error" style={{paddingLeft:'20rem', paddingRight:'15rem', width: '50%', marginLeft:'29rem'}}><strong>{error}</strong></Alert>) : ''}
             {success ?  (<Alert variant="filled" severity="success" style={{paddingLeft:'15rem', paddingRight:'15rem', width: '50%', marginLeft:'25rem'}}><strong>{success}</strong></Alert>) : ''}        
        </div><br/>
+      
         <div className="row">
-            <div className="col-md-12" style={{marginLeft: '2rem'}}><br/>
+            <div className="col-md-12" style={{marginLeft: '2rem'}}>
                 <h1 style={{textAlign: 'center', textDecoration:'underline'}}><strong>FILL UP THE FORM TO CREATE PRODUCT</strong></h1><hr/>
+                <div className="p-4">
+                    <FileUpload />
+                </div>
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
+                    <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem'}}>
                         <label style={{fontSize: '1rem'}}>Brand:</label><br/>
                         <select name="brand" className="form-control" onChange={handleChange}>
                             <option>Please select</option>
