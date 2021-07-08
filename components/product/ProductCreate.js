@@ -72,8 +72,8 @@ const ProductCreate = () => {
                     ...values, 
                     error: '', 
                     success: data.message,   
-                    brand: '',
-                    category: '',
+                    brand: "",
+                    category: "",
                     product_name: '',
                     Model_Number: '',
                     product_description: '',
@@ -112,14 +112,15 @@ const ProductCreate = () => {
                             <option>Please select</option>
                             {brands.map(b => <option key={b.slug} value={b.brand_name}>{b.brand_name}</option>)}
                         </select>
-                    </div><br/>
+                    </div><br/> */}
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Category:</label><br/>
                         <select name="category" className="form-control" onChange={handleChange}>
-                            <option>Please select</option>
-                            {categories.map(c => <option key={c.slug} value={c.category_name}>{c.category_name}</option>)}
+                            <option value="">Please select</option>
+                            {categories.map(c => <option key={c._id} value={c._id}>{c.category_name}</option>)}
                         </select>
-                    </div><br/> */}
+                    </div><br/>
+                    {/* {JSON.stringify(categories)} */}
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Product Name:</label><br/>
                         <input type="text" name="product_name" className="form-control" value={product_name} onChange={handleChange} />
@@ -159,6 +160,7 @@ const ProductCreate = () => {
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Shipping:</label><br/>
                         <select name="shipping" className="form-control" onChange={handleChange}>
+                            <option value="">Please Select</option>
                             <option value="No">No</option>
                             <option value="Yes">Yes</option>
                         </select>
