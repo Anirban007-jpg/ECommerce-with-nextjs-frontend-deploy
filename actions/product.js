@@ -8,10 +8,9 @@ export const CreateProduct = (token, content) => {
         method: 'POST',
         headers:{
             Accept: 'application/json',
-            'Content-Type' : 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body:JSON.stringify(content)
+        body: content
     }).then(response => {
         handleResponse(response);
         return response.json();

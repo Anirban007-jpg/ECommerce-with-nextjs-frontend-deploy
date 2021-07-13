@@ -5,7 +5,8 @@ import { getCookie } from '../../actions/auth';
 import {CreateProduct} from '../../actions/product';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Alert from '@material-ui/lab/Alert';
-import FileUpload from '../forms/FileUpload';
+import FormData from 'form-data';
+
 
 
 const ProductCreate = () => {
@@ -21,22 +22,23 @@ const ProductCreate = () => {
         product_quantity: 0,
         product_sold: 0,
         product_price: 0,
-        product_country: '',
         shipping: '', 
         success: '',
-        error: ''
+        error: '',
+        photos: []
     })
 
     const [brands, setBrands] = useState([])
     const [categories, setCategories] = useState([])
     const [loading,setLoading] = useState(false);
+    const [formData,setFormData] = useState(new FormData());
     
     useEffect(() => {
         init()
         initBrands()
     }, [])
 
-    const {brand, category,success, error, product_name, product_description, product_color, product_size, product_quantity, product_sold, Model_Number, shipping, product_price, product_country} = values;
+    const {brand, category,photos,success, error, product_name, product_description, product_color, product_size, product_quantity, product_sold, Model_Number, shipping, product_price} = values;
 
     const token = getCookie('token');
 
@@ -61,11 +63,27 @@ const ProductCreate = () => {
         })
     }
 
+    
+    const handleChange = name => (e) => {
+        const value = name === "photos" ? Array.from(e.target.files) : e.target.value;
+        if (name === "photos") {
+            value.forEach(photo => formData.append('photos',photo));
+        }else{
+            formData.set(name,value);
+        }
+       
+        // console.log(e.target.files);
+        
+        setValues({...values, error: '', success: '', [name]: value })
+        // console.log(e.target.name, ' ------- ', e.target.value)
+        setFormData(formData)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setLoading(true);
-        CreateProduct(token, values).then(data => {
+        // console.log(values);
+        CreateProduct(token, formData).then(data => {
             if (data.error){
                 setValues({...values, error: data.error, success: ''});
                 setLoading(false);
@@ -84,8 +102,8 @@ const ProductCreate = () => {
                     product_quantity: 0,
                     product_sold: 0,
                     product_price: 0,
-                    product_country: '',
-                    shipping: ''
+                    shipping: '',
+                    photos: []
                 });
                 setLoading(false);
             }
@@ -93,35 +111,40 @@ const ProductCreate = () => {
     }
     
 
-    const handleChange = (e) => {
-        setValues({...values, error: '', success: '', [e.target.name]: e.target.value })
-        // console.log(e.target.name, ' ------- ', e.target.value)
-    }
 
     return (
        <>
        <div>
             {error  ? (<Alert variant="filled" severity="error" style={{paddingLeft:'20rem', paddingRight:'15rem', width: '50%', marginLeft:'29rem'}}><strong>{error}</strong></Alert>) : ''}
-            {success ?  (<Alert variant="filled" severity="success" style={{paddingLeft:'15rem', paddingRight:'15rem', width: '50%', marginLeft:'25rem'}}><strong>{success}</strong></Alert>) : ''}        
+            {success ?  (<Alert variant="filled" severity="success" style={{paddingLeft:'20rem', paddingRight:'15rem', width: '50%', marginLeft:'29rem'}}><strong>{success}</strong></Alert>) : ''}        
        </div><br/>
       
         <div className="row">
             <div className="col-md-12" style={{marginLeft: '2rem'}}>
                 <h1 style={{textAlign: 'center', textDecoration:'underline'}}><strong>FILL UP THE FORM TO CREATE PRODUCT</strong></h1><hr/>
-                <div className="p-4">
-                    <FileUpload />
-                </div>
                 <form onSubmit={handleSubmit}>
+                <div className="row p-4">
+                    <label className="btn btn-primary btn-raised" style={{width: '9%', marginLeft: '1rem'}}>
+                        Choose File
+                        <input 
+                            type="file" 
+                            hidden 
+                            multiple 
+                            accept="images/*" 
+                            onChange={handleChange('photos')} 
+                        />        
+                    </label>
+                    </div>
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem'}}>
                         <label style={{fontSize: '1rem'}}>Brand:</label><br/>
-                        <select name="brand" className="form-control" onChange={handleChange}>
+                        <select name="brand" className="form-control" onChange={handleChange('brand')}>
                             <option>Please select</option>
                             {brands.map(b => <option key={b._id} value={b._id}>{b.brand_name}</option>)}
                         </select>
                     </div><br/>
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Category:</label><br/>
-                        <select name="category" className="form-control" onChange={handleChange}>
+                        <select name="category" className="form-control" onChange={handleChange('category')}>
                             <option value="">Please select</option>
                             {categories.map(c => <option key={c._id} value={c._id}>{c.category_name}</option>)}
                         </select>
@@ -129,43 +152,39 @@ const ProductCreate = () => {
                     {/* {JSON.stringify(categories)} */}
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Product Name:</label><br/>
-                        <input type="text" name="product_name" className="form-control" value={product_name} onChange={handleChange} />
+                        <input type="text" name="product_name" className="form-control" value={product_name} onChange={handleChange('product_name')} />
                     </div><br/>
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Model Number:</label><br/>
-                        <input type="text" name="Model_Number" className="form-control" value={Model_Number} onChange={handleChange} />
+                        <input type="text" name="Model_Number" className="form-control" value={Model_Number} onChange={handleChange('Model_Number')} />
                     </div><br/>
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Product Description:</label><br/><br/>
-                        <textarea type="text" name="product_description" className="form-control" value={product_description} onChange={handleChange} rows='1000' style={{height: '20rem'}}></textarea>
+                        <textarea type="text" name="product_description" className="form-control" value={product_description} onChange={handleChange('product_description')} rows='1000' style={{height: '20rem'}}></textarea>
                     </div><br/>
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Product Color:</label><br/>
-                        <input type="text" name="product_color" className="form-control" value={product_color} onChange={handleChange} />
+                        <input type="text" name="product_color" className="form-control" value={product_color} onChange={handleChange('product_color')} />
                     </div><br/>
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Product Size:</label><br/>
-                        <input type="text" name="product_size" className="form-control" value={product_size} onChange={handleChange} />
-                    </div><br/>
-                    <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
-                        <label style={{fontSize: '1rem'}}>Product Available Only In:</label><br/>
-                        <input type="text" name="product_country" className="form-control" value={product_country} onChange={handleChange} />
+                        <input type="text" name="product_size" className="form-control" value={product_size} onChange={handleChange('product_size')} />
                     </div><br/>
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>No Of Products Available:</label><br/>
-                        <input type="number" name="product_quantity" className="form-control" value={product_quantity} onChange={handleChange} />
+                        <input type="number" name="product_quantity" className="form-control" value={product_quantity} onChange={handleChange('product_quantity')} />
                     </div><br/>
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Products Sold:</label><br/>
-                        <input type="number" name="product_sold" className="form-control" value={product_sold} onChange={handleChange} />
+                        <input type="number" name="product_sold" className="form-control" value={product_sold} onChange={handleChange('product_sold')} />
                     </div><br/>
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Products Price:</label><br/>
-                        <input type="number" name="product_price" className="form-control" value={product_price} onChange={handleChange} />
+                        <input type="number" name="product_price" className="form-control" value={product_price} onChange={handleChange('product_price')} />
                     </div><br/>
                     <div className="form-group" style={{marginLeft: '2rem', marginRight: '2rem', marginTop: '1rem'}}>
                         <label style={{fontSize: '1rem'}}>Shipping:</label><br/>
-                        <select name="shipping" className="form-control" onChange={handleChange}>
+                        <select name="shipping" className="form-control" onChange={handleChange('shipping')}>
                             <option value="">Please Select</option>
                             <option value="No">No</option>
                             <option value="Yes">Yes</option>
