@@ -4,8 +4,10 @@ import Router from 'next/router'
 import Dashboard from '../../components/dealer/Dashboard';
 import Head from 'next/head';
 import { API_NAME, DOMAIN } from "../../config";
+import { getProducts } from '../../actions/product';
+import AllProductCard from '../../components/dealer/AllProductCard';
 
-const index = () => {
+const index = ({products}) => {
 
       const head = () => (
           <Head>
@@ -55,6 +57,21 @@ const index = () => {
                 <div className="canvas">
                     <h1 className="heading1">Dealer Dashboard</h1>
                 </div>
+                <div className="container-fluid">
+                  
+                     <h2 style={{textAlign: 'center'}}>All Products</h2><br/>
+                    <div className="row">
+                    {products.map((p) => (
+                      <div className="col-5 pb-4" key={p._id}>
+                        <AllProductCard product={p} /><br/>
+                      </div>
+                    ))}
+                    </div>
+                  </div>
+                  {/* <div style={{marginLeft : '5rem'}}>
+                    {products.map((p) => (<p>{p._id}</p>))}
+                  </div> */}
+                
             </Dashboard>
 
             <footer className="page-footer" style={{backgroundColor: '#757575', marginTop : "750px"}}>
@@ -80,6 +97,18 @@ const index = () => {
         </footer>
         </React.Fragment>
     )
+}
+
+index.getInitialProps = () => {
+  return getProducts().then(data => {
+    if (data.error){
+      console.log(err);
+    }else{
+      return {
+        products : data.products
+      }
+    }
+  })
 }
 
 export default index

@@ -18,3 +18,25 @@ export const CreateProduct = (token, content) => {
         console.log(err);
     })
 }
+
+export const getProducts = () => {
+    return fetch(`${API}/products`, {
+        method: 'GET'
+    }).then(response => {
+        handleResponse(response);
+        return response.json();
+    }).catch(err => {
+        console.log(err);
+    })
+}
+
+export const getSingleProduct = (slug) => {
+    return fetch(`${API}/product/${slug}`, {
+        method: 'GET'
+    }).then(response => {
+        handleResponse(response);
+        return response.json();
+    }).catch(err => {
+        console.log(err);
+    })
+}

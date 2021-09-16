@@ -87,6 +87,7 @@ const UpdateProfile = ({user}) => {
                 updateUser(data, () => {
                     setValues({ ...values, email: data.email, address: data.address, mobile_no: data.mobile_no, about: data.about, username: data.username, youtube: data.youtube, facebook: data.facebook, success: "User Updated Succesfully"});
                     setLoading(false);
+                    Router.push('/dealer/profile');
                 })
             }
             

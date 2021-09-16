@@ -2,6 +2,8 @@ import Layout  from "../components/Layout"
 import React from "react"
 import Head from 'next/head';
 import { API_NAME, DOMAIN } from "../config";
+import { isAuth } from "../actions/auth";
+import Router from "next/router";
 
 const HomePage = () => {
 
@@ -19,6 +21,19 @@ const HomePage = () => {
             <meta property="og:image:type" content={"image/jpg"} />
         </Head>
     )
+
+    // if (isAuth() && isAuth().role === 'Admin'){
+    //   Router.push('/admin')
+    // }
+    // else if (isAuth() && isAuth().role === 'Dealer'){
+    //   Router.push('/dealer')
+    // }
+    // else if (isAuth() && isAuth().role === 'Customer'){
+    //   Router.push('/customer')
+    // }
+    // else if (isAuth() && isAuth().role === 'Shopper'){
+    //   Router.push('/shopper')
+    // }
 
     return (
         <React.Fragment>
