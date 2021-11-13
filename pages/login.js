@@ -36,7 +36,7 @@ const login = ({router}) => {
             {head()}
               <Layout>
                     <div className="canvas">
-                        <h2>Log In and Start Your Session</h2>
+                        <h2><strong>Log In and Start Your Session</strong></h2>
                     </div><br/>
                     <div className="row">
                         <div className="col-md-12">{showRedirectedMessage()}</div>

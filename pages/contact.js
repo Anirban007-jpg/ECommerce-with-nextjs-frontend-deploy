@@ -2,6 +2,7 @@ import Layout  from "../components/Layout"
 import React from "react"
 import Head from 'next/head';
 import { API_NAME, DOMAIN } from "../config";
+import ContactForm from "../components/form/ContactForm";
 
 const contact = () => {
 
@@ -25,14 +26,14 @@ const contact = () => {
             {head()}
             <Layout>
                 <div className="canvas">
-                    <h1><strong>AMAZONIA - Amazon Clone</strong></h1>
+                    <h1><strong>AMAZONIA</strong></h1>
                     <p className="lead text-bold">This is the contact page so that you can contact with the website</p>
                 </div>
                 <div>
-                    <p>This Page will be designed Later</p>
+                    <ContactForm/>
                 </div>
             </Layout>
-            <footer className="page-footer" style={{backgroundColor: '#757575', marginTop : "250px"}}>
+            <footer className="page-footer" style={{backgroundColor: '#757575'}}>
           <div className="container">
             <div className="row">
               <div className="col l6 s12">

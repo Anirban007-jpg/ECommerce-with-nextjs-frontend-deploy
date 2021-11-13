@@ -14,9 +14,9 @@ Router.onRouteChangeError = url => nProgress.done();
 
 const styleChange = (router,key) => {
     if (router.pathname === key){
-      return {color:"white" , fontWeight: '500', fontWeight:'bolder', fontSize: '16px'}
+      return {color:"#03fc90" , fontWeight: '500', fontWeight:'bolder', fontSize: '20px'}
     }else{
-      return {color:"black" , fontWeight: '500', fontSize: '16px'}
+      return {color:"Black" , fontWeight: '500', fontSize: '16px', fontWeight:'700'}
     }
 }
 
@@ -34,8 +34,11 @@ const Navbar = ({router}) => {
                 </Link>
               )}
   
-           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
+           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"><i className="fa fa-bars" style={{marginBottom: '3rem'}}></i></span>
+              {/* <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span> */}
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">

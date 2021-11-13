@@ -40,7 +40,7 @@ const HomePage = () => {
             {head()}
               <Layout>
                 <div className="canvas">
-                    <h1><strong>AMAZONIA - Amazon Clone</strong></h1>
+                    <h1><strong>AMAZONIA</strong></h1>
                     <p className="lead text-bold">This is a amazone clone made by Anirban and Bishal</p>
                 </div>
                 <div>
