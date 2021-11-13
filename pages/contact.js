@@ -27,7 +27,7 @@ const contact = () => {
             <Layout>
                 <div className="canvas">
                     <h1><strong>AMAZONIA</strong></h1>
-                    <p className="lead text-bold">This is the contact page so that you can contact with the website</p>
+                    <p className="lead text-bold">This is the contact page so that you can contact with the website Owner</p>
                 </div>
                 <div>
                     <ContactForm/>

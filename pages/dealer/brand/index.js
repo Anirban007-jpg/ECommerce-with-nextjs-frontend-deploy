@@ -58,7 +58,7 @@ const brand = ({brands}) => {
                 <BrandIndex brands={brands} />
             </Dashboard> 
             
-            <footer className="page-footer" style={{backgroundColor: '#757575', marginTop: '45rem'}}>
+            <footer className="page-footer" style={{backgroundColor: '#757575'}}>
           <div className="container">
             <div className="row">
               <div className="col l6 s12">

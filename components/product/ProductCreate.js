@@ -120,12 +120,12 @@ const ProductCreate = () => {
        </div><br/>
       
         <div className="row">
-            <div className="col-md-12" style={{marginLeft: '2rem'}}>
+            <div className="col-md-9" style={{marginLeft: '10rem'}}>
                 <h1 style={{textAlign: 'center', textDecoration:'underline'}}><strong>FILL UP THE FORM TO CREATE PRODUCT</strong></h1><hr/>
                 <form onSubmit={handleSubmit}>
-                <div className="row p-4">
-                    <label className="btn btn-primary btn-raised" style={{width: '9%', marginLeft: '1rem'}}>
-                        Choose File
+                <div className="row p-4" style={{placeItems: 'center'}}>
+                    <label className="btn btn-primary btn-raised" style={{width: '40%', fontSize: '10px'}}>
+                        Upload Product Image
                         <input 
                             type="file" 
                             hidden 
@@ -198,8 +198,8 @@ const ProductCreate = () => {
                     ) :
                     (
                         <div>
-                            <button type="submit" className="btn btn-raised btn-primary" style={{display: 'block', width: '80%', border: '1px solid grey', borderRadius: '15rem', height: '3rem', marginLeft: '9rem'}}>Create Product</button><br/>
-                            <button type="reset" className="btn btn-raised btn-danger" style={{background:'red', display: 'block', width: '80%', border: '1px solid grey', borderRadius: '15rem', height: '3rem', marginLeft: '9rem'}}>Reset</button>
+                            <button type="submit" className="btn btn-raised btn-primary" style={{display: 'block', width: '80%', border: '1px solid grey', borderRadius: '15rem', height: '3rem', marginLeft: '5rem'}}>Create Product</button><br/>
+                            <button type="reset" className="btn btn-raised btn-danger" style={{background:'red', display: 'block', width: '80%', border: '1px solid grey', borderRadius: '15rem', height: '3rem', marginLeft: '5rem'}}>Reset</button>
                         </div>
                     )}
                     
